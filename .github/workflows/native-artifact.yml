@@ -1,8 +1,6 @@
 name: Build Executables
 on:
   workflow_dispatch:
-  release:
-    types: [published]
 
 permissions:
   contents: write
