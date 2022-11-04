@@ -60,13 +60,13 @@ jobs:
           components: 'native-image'
 
       - name: Build ${{ steps.executable.outputs.name }} native image
-        run: mvn -Pnative -DskipTests -Dnative-image-name=${{ steps.executable.outputs.name }} -Dnative-build-args=-Xmx10g package
+        run: mvn -Pnative -DskipTests package
 
       - name: Archive binary
         uses: actions/upload-artifact@v3
         with:
           name: ${{ steps.executable.outputs.name }}
-          path: target/${{ steps.executable.outputs.name }}${{ matrix.executable-suffix }}
+          path: target/spring-native-demo${{ matrix.executable-suffix }}
 
       - name: Upload release
         if: github.event.release.tag_name
