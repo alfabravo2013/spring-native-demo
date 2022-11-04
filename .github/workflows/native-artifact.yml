@@ -71,4 +71,6 @@ jobs:
       - name: Upload release
         if: github.event.release.tag_name
         uses: actions/upload-artifact@v2
-        path: target
+        with:
+          name: artifacts
+          path: target
