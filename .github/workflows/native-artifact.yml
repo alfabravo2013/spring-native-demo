@@ -1,6 +1,6 @@
 name: Build Executables
 on:
-  dispatch_workflow:
+  workflow_dispatch:
   push:
     branches:
       - main
