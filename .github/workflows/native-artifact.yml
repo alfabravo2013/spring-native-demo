@@ -23,13 +23,10 @@ jobs:
         include:
           - os: ubuntu-latest
             executable-suffix: ''
-            native-build-args: --verbose -Xmx10g
           - os: macos-latest
             executable-suffix: ''
-            native-build-args: --verbose -Xmx13g
           - os: windows-2019
             executable-suffix: '.exe'
-            native-build-args: --verbose -Xmx10g
 
     steps:
       - name: Setup swap space
@@ -63,7 +60,7 @@ jobs:
           components: 'native-image'
 
       - name: Build ${{ steps.executable.outputs.name }} native image
-        run: mvn -Pnative -DskipTests -Dnative-image-name=${{ steps.executable.outputs.name }} -Dnative-build-args=${{ matrix.native-build-args }} package
+        run: mvn -Pnative -DskipTests -Dnative-image-name=${{ steps.executable.outputs.name }} -Dnative-build-args=-Xmx10g package
 
       - name: Archive binary
         uses: actions/upload-artifact@v3
