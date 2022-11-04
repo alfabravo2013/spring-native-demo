@@ -70,4 +70,5 @@ jobs:
 
       - name: Upload release
         if: github.event.release.tag_name
-        run: gh release upload ${{ github.event.release.tag_name }} target/${{ steps.executable.outputs.name }}${{ matrix.executable-suffix }}
+        uses: actions/upload-artifact@v2
+        path: target
